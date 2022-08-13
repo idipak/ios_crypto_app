@@ -27,7 +27,8 @@ class PortfolioDataService{
     }
     
     func updatePortfolio(coin: CoinModel, amount: Double){
-        if let entity = savedEnties.first(where: {$0.id == coin.id}) {
+
+        if let entity = savedEnties.first(where: {$0.coinID == coin.id}) {
             if amount > 0 {
                 update(entity: entity, amount: amount)
             } else {
@@ -37,6 +38,8 @@ class PortfolioDataService{
             add(coin: coin, amount: amount)
         }
     }
+    
+   
     
     private func getPortfolio(){
         let request = NSFetchRequest<PortfolioEntity>(entityName: entityName)
